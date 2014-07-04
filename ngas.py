@@ -123,6 +123,8 @@ def gas(dataset, tmax=10000, delta_c=0.05, delta_n=0.0005, max_age=25,
 def main():
     args = parse_args()
     src_nodes = np.loadtxt(args.fname, dtype=int)
+    src_arr_rev = np.array(src_nodes)[::-1]
+    src_nodes = np.rot90(src_arr_rev, 3)
     dataset = []
     width, height = src_nodes.shape
     lattice = nx.grid_2d_graph(width, height)
